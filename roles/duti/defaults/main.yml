@@ -10,11 +10,11 @@
 # to get current uti
 duti_default_apps_associations:
   # Sublime text
-  - bundle_id: com.sublimetext.4
-    utis:
-      - public.json
-      - public.text
-      - public.yaml
+  # - bundle_id: com.sublimetext.4
+  #   utis:
+  #     - public.json
+  #     - public.text
+  #     - public.yaml
 
   # VLC
   - bundle_id: org.videolan.vlc

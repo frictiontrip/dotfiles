@@ -1,29 +1,31 @@
 ---
 
 # Heavily copied & inspired by https://github.com/elnappo/dotfiles/blob/master/ansible/tasks/macos_defaults.yml
-- name: Set Transmission settings
-  community.general.osx_defaults: domain=org.m0k.transmission key={{ item.key }} type={{ item.type }} value={{ item.value }}
-  with_items:
-    # Don’t prompt for confirmation before downloading
-    - {key: "DownloadAsk", type: "bool", value: "false"}
-    # Trash original torrent files
-    - {key: "DeleteOriginalTorrent", type: "bool", value: "true"}
-    # Hide the donate message
-    - {key: "WarningDonate", type: "bool", value: "false"}
-    # Hide the legal disclaimer
-    - {key: "WarningLegal", type: "bool", value: "false"}
-    - {key: "EncryptionRequire", type: "bool", value: "true"}
-    # Setting up block list
-    - {key: "BlocklistAutoUpdate", type: "bool", value: "true"}
-    - {key: "BlocklistURL", type: "string", value: "http://john.bitsurge.net/public/biglist.p2p.gz"}
-    # Auto-resizing the window to fit transfers
-    - {key: "AutoSize", type: "bool", value: "true"}
-  notify:
-    - Kill Transmission
-  tags: osx
+# - name: Set Transmission settings
+#   community.general.osx_defaults: domain=org.m0k.transmission key={{ item.key }} type={{ item.type }} value={{ item.value }}
+#   with_items:
+#     # Don’t prompt for confirmation before downloading
+#     - {key: "DownloadAsk", type: "bool", value: "false"}
+#     # Trash original torrent files
+#     - {key: "DeleteOriginalTorrent", type: "bool", value: "true"}
+#     # Hide the donate message
+#     - {key: "WarningDonate", type: "bool", value: "false"}
+#     # Hide the legal disclaimer
+#     - {key: "WarningLegal", type: "bool", value: "false"}
+#     - {key: "EncryptionRequire", type: "bool", value: "true"}
+#     # Setting up block list
+#     - {key: "BlocklistAutoUpdate", type: "bool", value: "true"}
+#     - {key: "BlocklistURL", type: "string", value: "http://john.bitsurge.net/public/biglist.p2p.gz"}
+#     # Auto-resizing the window to fit transfers
+#     - {key: "AutoSize", type: "bool", value: "true"}
+#   notify:
+#     - Kill Transmission
+#   tags: osx
 
 - name: Set Finder settings
   community.general.osx_defaults: domain=com.apple.finder key={{ item.key }} type={{ item.type }} value={{ item.value }}
+  become: true
+  become_user: root
   with_items:
     - {key: "NewWindowTarget", type: "string", value: "PfLo"}
     - {key: "NewWindowTargetPath", type: "string", value: "file://{{ ansible_env.HOME }}/"}
@@ -80,6 +82,8 @@
 
 - name: Set global settings
   community.general.osx_defaults: domain=NSGlobalDomain key={{ item.key }} type={{ item.type }} value={{ item.value }}
+  become: true
+  become_user: root
   with_items:
     # Set sidebar icon size to default (=medium=2)
     - {key: "NSTableViewDefaultSizeMode", type: "int", value: "2"}
@@ -105,7 +109,7 @@
     # Set a blazingly fast keyboard repeat rate
     # - {key: "KeyRepeat", type: "float", value: "{{keyboard_key_repeat_rate}}"}
     # - {key: "InitialKeyRepeat", type: "int", value: "{{keyboard_initial_key_repeat_delay}}"}
-    # Enable subpixel font rendering on non-Apple LCDs
+    # Enable
     - {key: "AppleFontSmoothing", type: "int", value: "2"}
     # Finder: show all filename extensions
     - {key: "AppleShowAllExtensions", type: "bool", value: "true"}
@@ -119,6 +123,8 @@
 
 - name: Set Activity Monitor settings
   community.general.osx_defaults: domain=com.apple.ActivityMonitor key={{ item.key }} type={{ item.type }} value={{ item.value }}
+  become: true
+  become_user: root
   with_items:
     # Show the main window when launching Activity Monitor
     - {key: "OpenMainWindow", type: "bool", value: "true"}
@@ -133,12 +139,14 @@
 
 - name: Set some other settings
   community.general.osx_defaults: domain={{ item.domain }} key={{ item.key }} type={{ item.type }} value={{ item.value }}
+  become: true
+  become_user: root
   with_items:
     # Enable the WebKit Developer Tools in the Mac App Store
-    - {domain: "com.apple.appstore", key: "WebKitDeveloperExtras", type: "bool", value: "true"}
+    # - {domain: "com.apple.appstore", key: "WebKitDeveloperExtras", type: "bool", value: "true"}
     # Enable Debug Menu in the Mac App Store
-    - {domain: "com.apple.appstore", key: "ShowDebugMenu", type: "bool", value: "true"}
-    - {domain: "~/Library/Preferences/org.gpgtools.gpgmail", key: "SignNewEmailsByDefault", type: "bool", value: "false"}
+    # - {domain: "com.apple.appstore", key: "ShowDebugMenu", type: "bool", value: "true"}
+    # - {domain: "~/Library/Preferences/org.gpgtools.gpgmail", key: "SignNewEmailsByDefault", type: "bool", value: "false"}
     # Use plain text mode for new TextEdit documents
     - {domain: "com.apple.TextEdit", key: "RichText", type: "int", value: "0"}
     # defaults write com.apple.TextEdit PlainTextEncoding -int 4
@@ -157,7 +165,7 @@
     # Enable AirDrop - this is enabling Airdrop in general, it still needs to be activated per use
     - {domain: "com.apple.NetworkBrowser", key: "DisableAirDrop", type: "bool", value: "false"}
     # Enable AirDrop over Ethernet and on unsupported Macs running Lion
-    - {domain: "com.apple.NetworkBrowser", key: "BrowseAllInterfaces", type: "bool", value: "true"}
+    # - {domain: "com.apple.NetworkBrowser", key: "BrowseAllInterfaces", type: "bool", value: "true"}
     # Automatically open a new Finder window when a volume is mounted
     - {domain: "com.apple.frameworks.diskimages", key: "auto-open-ro-root", type: "bool", value: "true"}
     - {domain: "com.apple.frameworks.diskimages", key: "auto-open-rw-root", type: "bool", value: "true"}
@@ -168,23 +176,23 @@
     # Save screenshots to the desktop
     - {domain: "com.apple.screencapture", key: "location", type: "string", value: "{{ ansible_env.HOME }}/Desktop"}
     # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-    - {domain: "com.apple.screencapture", key: "type", type: "string", value: "png"}
+    # - {domain: "com.apple.screencapture", key: "type", type: "string", value: "png"}
     # Disable shadow in screenshots
     - {domain: "com.apple.screencapture", key: "disable-shadow", type: "bool", value: "true"}
     # Increase sound quality for Bluetooth headphones/headsets
     - {domain: "com.apple.BluetoothAudioAgent", key: "Apple Bitpool Min (editable)", type: "int", value: "40"}
     # Trackpad: enable tap to click for this user and for the login screen
-    - {domain: "com.apple.driver.AppleBluetoothMultitouch.trackpad", key: "Clicking", type: "int", value: "1"}
+    # - {domain: "com.apple.driver.AppleBluetoothMultitouch.trackpad", key: "Clicking", type: "int", value: "1"}
     # Check for software updates daily, not just once per week
     - {domain: "com.apple.SoftwareUpdate", key: "ScheduleFrequency", type: "int", value: "1"}
     # Enable the automatic update check
     - {domain: "com.apple.SoftwareUpdate", key: "AutomaticCheckEnabled", type: "bool", value: "true"}
     # Download newly available updates in background
-    - {domain: "com.apple.SoftwareUpdate", key: "AutomaticDownload", type: "int", value: "1"}
+    # - {domain: "com.apple.SoftwareUpdate", key: "AutomaticDownload", type: "int", value: "1"}
     # Install System data files & security updates
-    - {domain: "com.apple.SoftwareUpdate", key: "CriticalUpdateInstall", type: "int", value: "1"}
+    # - {domain: "com.apple.SoftwareUpdate", key: "CriticalUpdateInstall", type: "int", value: "1"}
     # Turn on app auto-update
-    - {domain: "com.apple.commerce", key: "AutoUpdate", type: "bool", value: "true"}
+    # - {domain: "com.apple.commerce", key: "AutoUpdate", type: "bool", value: "true"}
     # Set Help Viewer windows to non-floating mode
     - {domain: "com.apple.helpviewer", key: "DevMode", type: "bool", value: "true"}
     # Prevent Photos from opening automatically when devices are plugged in
@@ -224,6 +232,8 @@
 # defaults write com.apple.dock wvous-bl-modifier -int 0
 - name: Configure hot-corners
   community.general.osx_defaults: domain=com.apple.dock key={{ item.key }} type={{ item.type }} value={{ item.value }}
+  become: true
+  become_user: root
   with_items:
     # top right corner - screensaver
     - {key: "wvous-tr-corner", type: "int", value: "5"}

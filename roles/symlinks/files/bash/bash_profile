@@ -24,7 +24,7 @@ else
 fi
 
 # init rbenv for ruby
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
 # needed for pyenv
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"

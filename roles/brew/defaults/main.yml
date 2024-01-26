@@ -1,35 +1,35 @@
 ---
 brew_taps:
-  - heroku/brew
-  - homebrew/bundle
-  - homebrew/services
+  # - heroku/brew
+  # - homebrew/bundle
+  # - homebrew/services
   - microsoft/git
 
 brew_packages:
-  - act
-  - ansible
-  - autoconf
-  - automake
-  - awscli
+  # - act
+  # - ansible
+  # - autoconf
+  # - automake
+  # - awscli
   - bash
-  - binutils
-  - cmake
-  - coreutils
-  - diffutils
-  - duf
-  - duti
+  # - binutils
+  # - cmake
+  # - coreutils
+  # - diffutils
+  # - duf
+  # - duti
   - exiftool
   - git
-  - gmp # rbenv/ruby requirement
-  - gnupg
+  # - gmp # rbenv/ruby requirement
+  # - gnupg
   - gzip
-  - heroku/brew/heroku
+  # - heroku/brew/heroku
   - htop
   - jq
   - less
-  - libffi
-  - libpq # postgres requirement
-  - libyaml # rbenv/ruby requirement
+  # - libffi
+  # - libpq # postgres requirement
+  # - libyaml # rbenv/ruby requirement
   - lotyp/formulae/dockutil
   - mas
   - nano
@@ -38,78 +38,80 @@ brew_packages:
   - nvm
   - openssh
   - openssl@3 # rbenv/ruby requirement
-  - pre-commit
-  - pyenv
-  - python@3.9
-  - readline # rbenv/ruby requirement
-  - rbenv
+  # - pre-commit
+  # - pyenv
+  # - python@3.9
+  # - readline # rbenv/ruby requirement
+  # - rbenv
   - rsync
   # Don't install ruby from homebrew
   # We will use rbenv for this
   # - ruby
-  - ruby-build
-  - shellcheck
-  - stripe/stripe-cli/stripe
+  # - ruby-build
+  # - shellcheck
+  # - stripe/stripe-cli/stripe
   - tidy-html5
   - tree
-  - unbound
+  # - unbound
   - wget
   - wifi-password
   - yq
-  - zlib
+  # - zlib
   - zsh
 
 brew_cask_packages:
-  - 1password
-  - arq
-  - authy
-  - chromedriver
-  - cyberduck
+  # - 1password
+  - adobe-creative-cloud
+  # - arq
+  # - authy
+  # - chromedriver
+  # - cyberduck
+  - discorder
   - docker
-  - dupeguru
-  - element
-  - fawkes
+  # - dupeguru
+  # - element
+  # - fawkes
   - firefox
-  - fujitsu-scansnap-home
+  # - fujitsu-scansnap-home
   - git-credential-manager-core
-  - github
-  - google-chrome
-  - hazel
+  # - github
+  # - google-chrome
+  # - hazel
   - iterm2
-  - kindle
-  - launchcontrol
+  # - kindle
+  # - launchcontrol
   - little-snitch
-  - maccy
-  - macfuse
-  - maestral
-  - microsoft-auto-update
-  - microsoft-office
-  - microsoft-remote-desktop
-  - microsoft-teams
-  - netnewswire
+  # - maccy
+  # - macfuse
+  # - maestral
+  # - microsoft-auto-update
+  # - microsoft-office
+  # - microsoft-remote-desktop
+  # - microsoft-teams 
+  # - netnewswire
   - ngrok
-  - omnifocus
-  - redisinsight
-  - scrivener
-  - signal
-  - simple-comic
-  - skype
-  - slack
-  - spotify
-  - sublime-text
-  - superduper
-  - tabula
-  - teamviewer
-  - the-unarchiver
-  - thunderbird
-  - timing
-  - transmission
-  - veracrypt
-  - virtualbox
+  # - omnifocus
+  # - redisinsight
+  # - scrivener
+  # - signal
+  # - simple-comic
+  # - skype
+  # - slack
+  # - spotify
+  # - sublime-text
+  # - superduper
+  # - tabula
+  # - teamviewer
+  # - the-unarchiver
+  # - thunderbird
+  # - timing
+  # - transmission
+  # - veracrypt
+  # - virtualbox
   - visual-studio-code
   - vlc
-  - xmind
-  - zoom
+  # - xmind
+  # - zoom
 
 brew_cask_ql_packages:
   - qlcolorcode

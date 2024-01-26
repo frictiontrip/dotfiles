@@ -11,12 +11,12 @@ dock_items_persist:
  - name: "OmniFocus"
    path: "/Applications/OmniFocus.app/"
    pos: 2
- - name: "Firefox"
-   path: "/Applications/Firefox.app/"
-   pos: 3
- - name: "Sublime Text"
-   path: "/Applications/Sublime Text.app/"
-   pos: 4
+#  - name: "Firefox"
+#    path: "/Applications/Firefox.app/"
+#    pos: 3
+#  - name: "Sublime Text"
+#    path: "/Applications/Sublime Text.app/"
+#    pos: 4
  - name: "Visual Studio Code"
    path: "/Applications/Visual\ Studio\ Code.app/"
    pos: 5

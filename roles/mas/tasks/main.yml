@@ -6,12 +6,12 @@
     state: present
   tags: mas
 
-- name: Ensure your list of Mac App Store apps is present
-  community.general.mas:
-    id: "{{ item.id }}"
-    state: present
-  loop: "{{ mas_installed_apps }}"
-  tags: mas
+# - name: Ensure your list of Mac App Store apps is present
+#   community.general.mas:
+#     id: "{{ item.id }}"
+#     state: present
+#   loop: "{{ mas_installed_apps }}"
+#   tags: mas
 
 - name: Ensure unwanted Mac App Store apps are uninstalled
   community.general.mas:

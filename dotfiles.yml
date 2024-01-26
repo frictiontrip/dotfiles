@@ -3,30 +3,30 @@
   hosts: local
 
   roles:
-    - role: brew
-      tags: brew
-    - role: dock
-      tags: dock
-    - role: duti
-      tags: duti
-    - role: gem
-      tags: gem
-    - role: hazel
-      tags: hazel
-    - role: iterm
-      tags: iterm
-    - role: mas
-      tags: mas
-    - role: npm
-      tags: npm
-    - role: osx
-      tags: osx
-    - role: pip
-      tags: pip
-    - role: sublimetext
-      tags: sublimetext
-    - role: symlinks
-      tags: symlinks
+    # - role: brew
+    #   tags: brew
+    # - role: dock
+    #   tags: dock
+    # - role: duti
+    #   tags: duti
+    # - role: gem
+    #   tags: gem
+    # - role: hazel
+    #   tags: hazel
+    # - role: iterm
+    #   tags: iterm
+    # - role: mas
+    #   tags: mas
+    # - role: npm
+    #   tags: npm
+    # - role: osx
+    #   tags: osx
+    # - role: pip
+    #   tags: pip
+    # - role: sublimetext
+    #   tags: sublimetext
+    # - role: symlinks
+    #   tags: symlinks
     # docker role needs pip, therfore install after pip role
     # update: 2024-01-04: role commented out because of issues with my python setup
     # - role: docker

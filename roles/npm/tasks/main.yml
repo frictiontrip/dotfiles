@@ -5,14 +5,16 @@
     state: present
     global: true
   with_items:
-    - browser-sync
+    # - browser-sync
     - eslint
-    - joi
+    # - joi
     - jshint
-    - license-checker
-    - netlify-cli
+    # - license-checker
+    # - netlify-cli
     - npm-upgrade
     - npm-check
     - npm
+    - pnpm
     - prettier
+    - yarn
   tags: npm

@@ -5,6 +5,6 @@
 - name: Ensure preferences are loaded from a custom folder.
   ansible.builtin.command: "{{ item }}"
   with_items:
-    - "defaults write com.googlecode.iterm2 'PrefsCustomFolder' -string '/Users/jan/Code/Private/dotfiles/roles/iterm/files'"
+    - "defaults write com.googlecode.iterm2 'PrefsCustomFolder' -string '/Users/ehanna/Projects/dotfiles/roles/iterm/files'"
     - "defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder true"
   tags: iterm
