@@ -64,3 +64,5 @@
 # 	useHttpPath = true
 # [tag]
 # 	gpgSign = false
+[credential "https://dev.azure.com"]
+	useHttpPath = true
